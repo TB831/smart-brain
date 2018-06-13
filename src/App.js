@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Navigation from './components/Navigation/Navigation.js'
 import './App.css';
+import 'tachyons';
 
 class App extends Component {
   render() {
