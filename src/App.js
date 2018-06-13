@@ -7,6 +7,7 @@ import Rank from './components/Rank/Rank.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm.js';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition.js'
 import SignIn from './components/SignIn/SignIn.js'
+import Register from './components/Register/Register.js'
 import './App.css';
 import 'tachyons';
 
@@ -79,19 +80,23 @@ class App extends Component {
               params = {particlesOptions}
             />
         <Navigation onRouteChange={this.onRouteChange}/>
-        {this.state.route === 'signin'
-          ? <SignIn onRouteChange={this.onRouteChange}/>  //Ternary
-          : <div>
-            <Logo />
-            <Rank />
-            <ImageLinkForm
-              onInputChange = {this.onInputChange}
-              onButtonSubmit = {this.onButtonSubmit}/>
-            <FaceRecognition
-              box={this.state.box}
-              imageUrl={this.state.imageUrl}/>
-          </div>
-          }
+        {this.state.route === 'home'
+          ? <div>
+              <Logo />
+              <Rank />
+              <ImageLinkForm
+                onInputChange = {this.onInputChange}
+                onButtonSubmit = {this.onButtonSubmit}/>
+              <FaceRecognition
+                box={this.state.box}
+                imageUrl={this.state.imageUrl}/>
+            </div>
+          : (
+              this.state.route === 'signin'
+              ? <SignIn onRouteChange={this.onRouteChange}/>
+              : <Register onRouteChange={this.onRouteChange}/>
+          )
+        }
       </div>
     );
   }
