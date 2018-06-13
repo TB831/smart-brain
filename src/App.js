@@ -6,6 +6,7 @@ import Logo from './components/Logo/Logo.js';
 import Rank from './components/Rank/Rank.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm.js';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition.js'
+import SignIn from './components/SignIn/SignIn.js'
 import './App.css';
 import 'tachyons';
 
@@ -49,7 +50,6 @@ class App extends Component {
   }
 
   displayFaceBox = (box) => {
-    console.log(box);
     this.setState({box: box});
   }
 
@@ -74,6 +74,7 @@ class App extends Component {
               params = {particlesOptions}
             />
         <Navigation />
+        <SignIn />
         <Logo />
         <Rank />
         <ImageLinkForm
