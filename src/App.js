@@ -5,6 +5,7 @@ import Navigation from './components/Navigation/Navigation.js';
 import Logo from './components/Logo/Logo.js';
 import Rank from './components/Rank/Rank.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm.js';
+import FaceRecognition from './components/FaceRecognition/FaceRecognition.js'
 import './App.css';
 import 'tachyons';
 
@@ -29,23 +30,25 @@ class App extends Component {
     super();
     this.state = {
       input: '',
+      imageUrl: ''
     }
   }
 
   onInputChange = (event) => {
-    console.log(event.target.value);
+    this.setState({input: event.target.value})
   }
 
   onButtonSubmit = () => {
-    console.log('click');
-      clarifai.models.predict("a403429f2ddf4b49b307e318f00e528b",
-      "https://samples.clarifai.com/face-det.jpg").then(
-      function(response) {
-        console.log(response);
-      },
-      function(err) {
-        console.log(err);
-      }
+    this.setState({imageUrl: this.state.input});
+    clarifai.models
+      .predict(Clarifai.FACE_DETECT_MODEL,
+        this.state.input).then(
+          function(response) {
+            console.log(response);
+          },
+          function(err) {
+            console.log(err);
+          }
     );
   }
 
@@ -61,7 +64,7 @@ class App extends Component {
         <ImageLinkForm
           onInputChange = {this.onInputChange}
           onButtonSubmit = {this.onButtonSubmit}/>
-        {/* <FaceRecognition /> */}
+        <FaceRecognition imageUrl={this.state.imageUrl}/>
       </div>
     );
   }
