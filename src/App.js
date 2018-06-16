@@ -48,21 +48,20 @@ class App extends Component {
   }
 
   loadUser = (data) => {
-    this.setState({data: {
+    this.setState({user: {
       id: data.id,
       name: data.name,
       email: data.email,
-      password: data.password,
       entries: data.entries,
       joined: data.joined
     }})
   }
 
-  componentDidMount = () => {
-    fetch('http://localhost:3000')
-      .then(response => response.json())
-      .then(data => console.log)
-  }
+  // componentDidMount = () => {
+  //   fetch('http://localhost:3000')
+  //     .then(response => response.json())
+  //     .then(data => console.log)
+  // }
 
   calculateFaceLocation = (data) => {
     const faceDetect = data.outputs[0].data.regions[0].region_info.bounding_box;
