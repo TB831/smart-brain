@@ -9,6 +9,7 @@ Smartbrain is a full stack web application that uses technologies: React, Expres
   - Application uses Clarifai Image Recognition API to perform facial detection
   - Server built with Node.js and Express to route and make calls to the database/api
   - postgreSQL database built to allow persistant storage of accounts and user logins
+  - Application deployed to Heroku
   
 ## Screenshots
 ![smartbrain](https://user-images.githubusercontent.com/25675452/41555647-30130144-72ed-11e8-844c-80a5ab5998b8.png)
